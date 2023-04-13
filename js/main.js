@@ -6,7 +6,7 @@ const app = Vue.createApp({
         getAllResponse: null,
         error: null,
         showGetAll: false,
-        getForm: {
+        getParams: {
           title: null,
           artist: null,
           duration: null,
@@ -15,6 +15,11 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    clearParams() {
+      for (var key in this.getParams) {
+        this.getParams[key] = null;
+      }
+    },
     clearGetAll() {
         this.getAllResponse = null,
         this.error = null,  
@@ -22,29 +27,16 @@ const app = Vue.createApp({
     },
     async getAll() {
       try {
-          const response = await axios.get(baseUri, {
-            params: {
-              title: this.getForm.title,
-              artist: this.getForm.artist,
-              duration: this.getForm.duration,
-              publicationyear: this.getForm.publicationyear
-            }
-          })
+          const response = await axios.get(baseUri, { params: this.getParams })
           this.getAllResponse = await response
           this.error = null
-          this.showGetAll = true 
-          this.getForm.title = null,
-          this.getForm.artist = null,
-          this.getForm.duration = null,
-          this.getForm.publicationyear = null         
+          this.showGetAll = true           
+          this.clearParams();        
       } catch (error) {
           this.getAllResponse = null
           this.error = error
           this.showGetAll = false
-          this.getForm.title = null,
-          this.getForm.artist = null,
-          this.getForm.duration = null,
-          this.getForm.publicationyear = null
+          this.clearParams();
       }
     },
   },

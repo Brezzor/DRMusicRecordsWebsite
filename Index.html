@@ -30,10 +30,10 @@
           <div class="accordion-body">
             <div class="input-group">
               <button id="getAllButton" class="btn btn-primary" v-on:click="getAll()">GetAll</button>
-              <input id="inputTitle" v-model.trim="getForm.title" type="text" class="form-control col-1" placeholder="Title" >
-              <input id="inputArtist" v-model.trim="getForm.artist" type="text" class="form-control col-1" placeholder="Artist">
-              <input id="inputDuration" v-model.number="getForm.duration" type="number" class="form-control col-1" placeholder="Duration">
-              <input id="inputYear" v-model.number="getForm.publicationyear" type="number" class="form-control col-1" placeholder="Year">
+              <input id="inputTitle" v-model.trim="getParams.title" type="text" class="form-control col-1" placeholder="Title" >
+              <input id="inputArtist" v-model.trim="getParams.artist" type="text" class="form-control col-1" placeholder="Artist">
+              <input id="inputDuration" v-model.number="getParams.duration" type="number" class="form-control col-1" placeholder="Duration">
+              <input id="inputYear" v-model.number="getParams.publicationyear" type="number" class="form-control col-1" placeholder="Year">
               <button id="clearGetAll" class="btn btn-warning" v-on:click="clearGetAll()">Clear</button>
             </div>
             <div class="fluid-container">
